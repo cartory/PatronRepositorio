@@ -1,4 +1,4 @@
-DEMO address: http://www.zovoland.com/sudoku/Sudoku.html
+Demo address: http://www.zovoland.com/sudoku/Sudoku.html
 
 Techonology used: HTML, CSS, JavaScript and jQuery. 
 
