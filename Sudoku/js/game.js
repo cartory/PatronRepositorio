@@ -1,4 +1,3 @@
-
 const matrix9 = [
   [[7], [2], [], [9], [4], [5], [], [3], []],
   [[], [3], [9], [2], [], [6], [], [], [4]],
@@ -11,6 +10,18 @@ const matrix9 = [
   [[4], [9], [3], [], [6], [1], [], [5], [7]],
   [[5], [7], [], [3], [2], [], [8], [6], [9]],
   [[], [], [8], [5], [7], [9], [3], [4], []],
+];
+
+const solution = [
+  6, 1, 8,
+  8, 1, 5, 7,
+  4,
+  8, 9, 5,
+  //
+  1, 8,
+  8, 2,
+  1, 4,
+  2, 6, 1
 ];
 
 const Sudoku = {
@@ -56,13 +67,13 @@ const Sudoku = {
 
     $(".select div").click(function () {
       var thisInput = $(this).text();
-      var location = $(".selectActive").attr("id").split("_"); 
-      var thisRow = parseInt(location[1]); 
-      var thisCol = parseInt(location[2]); 
-      Sudoku.matrix[thisRow][thisCol] = parseInt(thisInput); 
+      var location = $(".selectActive").attr("id").split("_");
+      var thisRow = parseInt(location[1]);
+      var thisCol = parseInt(location[2]);
+      Sudoku.matrix[thisRow][thisCol] = parseInt(thisInput);
 
       $(".sWrong").removeClass("sWrong");
-      Sudoku.compare(); 
+      Sudoku.compare();
       $(".selectActive").text(parseInt(thisInput));
       $(".selectActive").removeClass("selectActive");
       $(".select").removeClass("active");
@@ -105,6 +116,20 @@ const Sudoku = {
           }
         }
       }
+    }
+  },
+
+  solve: function () {
+    for (var i = 0; i < 9; i++) {
+      for (var j = 0; j < 9; j++) {
+        let empty = Sudoku.matrix[i][j] == "";
+        if (empty) {
+          if (solution.length > 0) {
+            $(`#Block_${i}_${j}`).text(`${solution.shift()}`);
+          }
+        }
+      }
+
     }
   },
 };
